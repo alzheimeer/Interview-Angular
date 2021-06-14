@@ -1,0 +1,202 @@
+<div class="pepe">
+
+</div>
+
+
+<mat-card class="card main-content ml-5 mr-5">
+  <div class="row bck">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="title">Edición De Empleados</h5>
+        </div>
+        <div class="card-body">
+
+          <div class="m-5">
+            <form autocomplete="off" [formGroup]="miFormulario"
+              (ngSubmit)="guardar()">
+
+
+
+              <!-- Primera 1 Fila -->
+              <div class="row m-2">
+
+                <!-- Tipo de Documento -->
+                <mat-form-field appearance="fill" class="form-group col-md-6">
+                  <mat-select formControlName="typeID">
+                    <mat-option selected disabled value="">Escoge...</mat-option>
+                    <mat-option [value]="item" *ngFor="let item of typeID">{{item}}</mat-option>
+                  </mat-select>
+                  <mat-label><mat-icon>description</mat-icon> <b> Tipo De
+                      Documento</b></mat-label>
+                </mat-form-field>
+
+                <!-- Numero De Documento -->
+                <mat-form-field class="form-group col-md-6 pl-1">
+                  <mat-label>Número De Documento</mat-label>
+                  <input matInput formControlName="numID" type="text"
+                    class="form-control">
+                  <mat-error *ngIf="campoEsValido('numID')">
+                    {{getError('numID')}}
+                  </mat-error>
+                </mat-form-field>
+              </div>
+
+              <!-- Primera 2 Fila -->
+              <div class="row m-2">
+
+
+
+                <!-- Primer Nombre-->
+                <mat-form-field class="form-group col-md-6 pl-1">
+                  <mat-label>Primer Nombre</mat-label>
+                  <input matInput formControlName="firstName" type="text"
+                    class="form-control text-uppercase"
+                    (keyup)="cambios('firstName')">
+                  <mat-error *ngIf="campoEsValido('firstName')">
+                    {{getError('firstName')}}
+                  </mat-error>
+                </mat-form-field>
+
+                <!-- Otros Nombres-->
+                <mat-form-field class="form-group col-md-6 pl-1">
+                  <mat-label>Otros Nombres <small>(opcional)</small></mat-label>
+                  <input matInput formControlName="othersName" type="text"
+                    class="form-control text-uppercase"
+                    (keyup)="cambios('othersName')">
+                  <mat-error *ngIf="campoEsValido('othersName')">
+                    {{getError('othersName')}}
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="row m-2">
+                <!-- Primer Apellido-->
+                <mat-form-field class="form-group col-md-6 pl-1">
+                  <mat-label>Primer Apellido</mat-label>
+                  <input matInput formControlName="surname" type="text"
+                    (keyup)="cambios('surname')"
+                    class="form-control text-uppercase"
+                    (keyup)="cambios('surname')">
+                  <mat-error *ngIf="campoEsValido('surname')">
+                    {{getError('surname')}}
+                  </mat-error>
+                </mat-form-field>
+
+                <!-- Segundo Apellido-->
+                <mat-form-field class="form-group col-md-6 pl-1">
+                  <mat-label>Segundo Apellido</mat-label>
+                  <input matInput formControlName="secondSurname" type="text"
+                    class="form-control text-uppercase"
+                    (keyup)="cambios('secondSurname')">
+                  <mat-error *ngIf="campoEsValido('secondSurname')">
+                    {{getError('secondSurname')}}
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="row m-2">
+
+                <!-- Fecha  Ingreso-->
+                <mat-form-field class="form-group col-md-3 pl-1">
+                  <mat-label>Fecha De Ingreso</mat-label>
+                  <input matInput formControlName="dateEntry" type="date"
+                    [min]="mesAtras2" [max]="hoy2"
+                    class="form-control" readonly>
+                  <mat-error *ngIf="campoEsValido('dateEntry')">
+                    {{getError('dateEntry')}}
+                  </mat-error>
+                </mat-form-field>
+
+                <!-- Pais -->
+                <mat-form-field appearance="fill" class="form-group col-md-3">
+                  <mat-select formControlName="country">
+                    <mat-option selected disabled value="">Escoge...</mat-option>
+                    <mat-option [value]="item" *ngFor="let item of country">{{item}}</mat-option>
+                  </mat-select>
+                  <mat-label><mat-icon>description</mat-icon> <b> País</b></mat-label>
+                </mat-form-field>
+
+
+                <!-- Area -->
+                <mat-form-field appearance="fill" class="form-group col-md-3">
+                  <mat-select formControlName="area">
+                    <mat-option selected disabled value="">Escoge...</mat-option>
+                    <mat-option [value]="item" *ngFor="let item of area">{{item}}</mat-option>
+                  </mat-select>
+                  <mat-label><mat-icon>description</mat-icon> <b> Area</b></mat-label>
+                </mat-form-field>
+
+
+                <!-- Estado -->
+                <mat-form-field appearance="fill" class="form-group col-md-3">
+                  <mat-select formControlName="status">
+                    <mat-option selected disabled value="">Escoge...</mat-option>
+                    <mat-option [value]="item" *ngFor="let item of estado">{{item}}</mat-option>
+                  </mat-select>
+                  <mat-label><mat-icon>description</mat-icon> <b> Estado</b></mat-label>
+                </mat-form-field>
+              </div>
+
+
+
+              <div class="row">
+                <div class="col-md-2">
+                  <h2 class="text-right">Email:</h2>
+                </div>
+                <div class="col-md-4 text-info text-left">
+                  <h2>{{ miFormulario.value.email }}</h2>
+                </div>
+                <div class="col-md-2 text-info text-left">
+                  <h2>Id Usuario:</h2>
+                </div>
+                <div class="col-md-4 text-info text-left">
+                  <h2>{{ this.usuario._id }}</h2>
+                </div>
+              </div>
+
+
+
+
+
+
+            <!-- Boton De Enviar Formulario -->
+            <div class="form-group d-flex h-100">
+              <div class="align-self-end ml-auto">
+                <button type="submit" class="btn btn-primary btn-block"
+                  [disabled]="miFormulario.invalid">
+                  <i class="fa fa-save"></i>
+                  Actualizar
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+
+
+
+
+
+      </div>
+
+
+
+
+
+
+
+    </div>
+  </div>
+
+
+</div>
+
+<!--
+
+
+
+<span>Valid</span>
+<pre>{{ miFormulario.valid }}</pre>
+<br>
+
+<span>Value</span>
+<pre>{{ miFormulario.value | json }}</pre>
+<br> -->

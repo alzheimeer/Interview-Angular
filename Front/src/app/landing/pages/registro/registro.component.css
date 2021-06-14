@@ -1,0 +1,135 @@
+.mtx{
+  margin-top: 10%;
+
+
+}
+.mty{
+  background-image: url('/assets/images/1-unsplash.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  color: white;
+}
+
+h5 {
+  font-size: 150%;
+  font-weight: 700;
+}
+
+
+h2{
+  font-size: 150%;
+  font-weight: 700;
+}
+
+@media (min-width: 280px) {
+
+  mat-card-header img {
+    width: 25vw;
+    height: 12vh;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    margin-top: 5vh;
+    margin-left: 24%;
+    overflow: auto;
+  }
+}
+
+
+@media (min-width: 576px) {
+
+  mat-card-header img {
+    width: 18vw;
+    height: 12vh;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    margin-top: 5vh;
+    margin-left: 34%;
+    overflow: auto;
+  }
+}
+
+
+@media (min-width: 768px) {
+
+  mat-card-header img {
+    width: 20vw;
+    height: 10vh;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    margin-top: 10vh;
+    margin-left: 3%;
+    margin-right: 18%;
+    overflow: auto;
+  }
+}
+
+
+@media (min-width: 900px) {
+  mat-card-header img {
+    width: 18vw;
+    height: 12vh;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    margin-top: 2vh;
+    margin-left: 5%;
+    margin-right: 15%;
+    overflow: auto;
+  }
+}
+
+@media (min-width: 1170px) {
+  mat-card-header img {
+    width: 10vw;
+    height: 18h;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    margin-top: 8vh;
+    margin-left: 19%;
+    overflow: auto;
+  }
+}
+
+
+@media (min-width: 1350px) {
+  mat-card-header img {
+    width: 10vw;
+    height: 20vh;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    margin-top: 8vh;
+    margin-left: 23%;
+    overflow: auto;
+  }
+}
+
+.col-md-4 {
+  padding-right: 15px;
+  padding-left: 15px;
+  text-align: center;
+}
+
+mat-card-header {
+  background-size: cover;
+  height: 24%;
+  margin-bottom: 10%;
+}
+
+mat-card-subtitle,
+mat-card-title {
+  font-size: 100%;
+}
+
+
+.pepe{
+  height: 35%;
+  background-image: url("/assets/images/1-unsplash.jpg");
+  background-size: 100%;
+}
+.titulo{
+  margin-top: 10%;
+}
+
+.bck {
+  background-color:  rgb(0, 0, 0);
+}

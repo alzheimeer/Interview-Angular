@@ -1,0 +1,194 @@
+<div class="pepe">
+
+</div>
+
+<div class="main-content ml-5 mr-5">
+  <div class="row">
+
+    <mat-card class="col-md-12">
+
+      <div class="card">
+        <div class="card-header">
+          <h2 class="title">Consulta De Usuarios</h2>
+          <div class="form-inline">
+
+            <!-- Selecciona La Categoria A Buscar -->
+            <select type="text" class="form-control mb-2" placeholder="Buscar
+              ..." #txtSearch2 (change)="choose(txtSearch2.value)">
+              <option selected disabled value="">   Buscar por ...</option>
+              <option *ngFor="let producto of productos" [value]="producto.value">{{producto.name}}</option>
+            </select>
+
+
+
+            <label class="ml-2 mr-2">Ingrese Termino A Buscar:</label>
+            <input type="text" placeholder="Digite aqui" class="form-control mb-2"
+            #txtSearchNum2 (keyup)="searchSolicitud(txtSearchNum2.value, 2, 'num')"></div>
+
+          <button (click)="prevPage(2)" mat-icon-button color="primary"><i
+              class="far fa-arrow-alt-circle-left fa-2x"></i></button>
+          <button (click)="nextPage(2)" mat-icon-button color="primary"><i
+              class="far fa-arrow-alt-circle-right fa-2x"></i></button>
+        </div>
+
+        <div class="card-body">
+
+          <div class="accordion_display">
+            <div class="accordion_size">
+              <mat-accordion multi="true" *ngIf="usuarios.length">
+                <mat-expansion-panel *ngFor="let usuario of usuarios  | filterforamount:page2:search2:tiposearch"
+                  hiddenToggle="false">
+                  <mat-expansion-panel-header class="mb-2">
+                    <mat-panel-title >
+
+
+                        <div class="col-12 col-sm-4 col-md-4  col-lg-4 col-xl-4" >
+                          <span class="text_center"> Nombre: {{ usuario.firstName }}
+                                                            {{ usuario.othersName}}
+                                                            {{ usuario.surname}}
+                                                            {{ usuario.secondSurname}}
+                          </span>
+                        </div>
+                        <div class="col-12 col-sm-5 col-md-6  col-lg-6 col-xl-6">
+                          <span class="text_center" > Estado: {{ usuario.status }}</span>
+                        <span class="spacer"></span>
+                        </div>
+                        <div class="col-12 col-sm-3 col-md-2  col-lg-2 col-xl-2">
+                          <span class="spacer"></span>
+                          <button  *ngIf="usuario.country == 'COLOMBIA'" mat-raised-button>{{usuario.country}}</button>
+                          <button  *ngIf="usuario.country == 'ESTADOS UNIDOS'" mat-raised-button>{{usuario.country}}</button>
+                        </div>
+                    </mat-panel-title>
+                  </mat-expansion-panel-header>
+
+
+                  <mat-panel-title>
+                    <div class="row">
+                      <div class="col-md-3">
+                        <div class="row">
+                          <div class="col-md-12">
+                            <h4>Tipo De Documento: </h4>
+                          </div>
+                          <div class="col-md-12">
+                            <h4>{{usuario.typeID}} </h4>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-md-3">
+                        <div class="row">
+                          <div class="col-md-12">
+                            <h4>Numero De Documento: </h4>
+                          </div>
+                          <div class="col-md-12">
+                            <h4>{{usuario.numID}} </h4>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                        <div class="row">
+                          <div class="col-md-12">
+                            <h4>Email: </h4>
+                          </div>
+                          <div class="col-md-12">
+                            <h4>{{usuario.email}} </h4>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                        <div class="row">
+                          <div class="col-md-12">
+                            <h4>Area: </h4>
+                          </div>
+                          <div class="col-md-12">
+                            <h4>{{usuario.area}} </h4>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                    <div class="row">
+                      <div class="col-md-3">
+                        <div class="col-md-12">
+                          <h4>ID: </h4>
+                        </div>
+                        <div class="col-md-12">
+                          <h4>{{usuario._id}} </h4>
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                        <div class="col-md-12">
+                          <h4>Fecha De Registro: </h4>
+                        </div>
+                        <div class="col-md-12">
+                          <h4>{{usuario.dateEntry | date:'d/M/y'}} </h4>
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                        <div class="col-md-12">
+                          <h4>Fecha De Creacion: </h4>
+                        </div>
+                        <div class="col-md-12">
+                          <h4>{{usuario.createdAt | date:'d/M/y'}} </h4>
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                        <div class="col-md-12">
+                          <h4>Fecha De Actualizacion: </h4>
+                        </div>
+                        <div class="col-md-12">
+                          <h4>{{usuario.updatedAt | date:'d/M/y'}} </h4>
+                        </div>
+                      </div>
+                    </div>
+                  </mat-panel-title>
+
+
+
+
+                    <div class="row">
+                      <div class="col-md-2">
+                        <button color="primary" mat-button (click)="editar(usuario)">Editar Usuario</button>
+                      </div>
+                      <div class="col-md-2">
+
+                        <button type="button" mat-button color="primary" (click)="guardarID(usuario)" data-toggle="modal" data-target="#exampleModal">Eliminar Usuario</button>
+                      </div>
+
+                    </div>
+
+
+                </mat-expansion-panel>
+              </mat-accordion>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-card>
+
+
+
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">ADVERTENCIA</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Seguro que quieres eliminar este usuario?
+      </div>
+      <div class="modal-footer">
+
+        <button (click)='delete()'  type="button" class="btn btn-primary" data-dismiss="modal">SI</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">NO</button>
+      </div>
+    </div>
+  </div>
+</div>
